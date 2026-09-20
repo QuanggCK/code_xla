@@ -15,24 +15,35 @@ img = np.array([
     [112, 124, 136, 148, 160, 172, 184, 196]
 ])
 
-# Tìm L
-biggest_num = max(img)
-i = 2 
-while i < biggest_num:
-    i = 2 * i
-    i += 1
-
-L = i*2 - 1
-count = []
-a = 2
+# Tìm số lớn nhất
+biggest_num = 0
 for i in img:
-    if i not in count:
-        count[i] = 1
-    else:
-        count[i]+=1
-        count[i] = i[0][0][1][0] / array_size
-        count[i][0][0][1] = round(sum(count(i[0][0][-1][1]), count(i[0][0][i][0])))
+    for j in i:
+        if j > biggest_num:
+            biggest_num = j
 
-sorted_count = sorted(count.items(), key = lambda x:x[1], reverse=False)
+# Tìm L (L này là độ sáng bao phủ cả ma trận)
+i = 1, a = 0
+while i < biggest_num:
+    i = 2 ** a
+    a += 1
+Lmax = (2 ** (a-1)) - 1
 
+count = {}
+ratio = {}
+acc_ra={}
+for i in img:
+    for j in i:
+        if j not in count:
+            count[j] = 1
+        else: count[j] += 1
 
+for i in count:
+    ratio[i] = count[i] / array_size
+
+# Tính CDF, phần ratio tự xoay theo luôn
+sorted_count = sorted(count, reverse=False)
+accum_ratio = 0
+for i in sorted_count:
+    accum_ratio += ratio[i]
+    acc_ra[i] = accum_ratio
