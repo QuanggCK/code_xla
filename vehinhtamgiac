@@ -1,0 +1,18 @@
+import cv2
+import numpy as np
+
+canvas = np.zeros((300, 300, 3), dtype='uint8')
+
+white = (255, 255, 255)
+
+# 3 đỉnh tam giác 
+p1 = (50, 50)
+p2 = (50, 200)
+p3 = (200, 200)
+
+cv2.line(canvas, p1, p2, white, 2)
+cv2.line(canvas, p2, p3, white, 2)
+cv2.line(canvas, p3, p1, white, 2)
+
+# Lưu ảnh
+cv2.imwrite('tamgiac.png', canvas)
