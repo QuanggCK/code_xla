@@ -9,6 +9,7 @@ white = (255, 255, 255)
 # Tâm 
 center = (150, 150)
 
+# Hàm kiểm tra snt
 for radius in range(2, 176):
     check = True
 

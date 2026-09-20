@@ -8,4 +8,3 @@ if __name__ == "__main__":
     plt.imshow(image, cmap="gray",vmin=0, vmax=255) # Ảnh gốc
     plt.title("Original Image")
     plt.show()
-    # Ảnh gốc
