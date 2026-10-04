@@ -26,6 +26,7 @@ class highpass_filter(object):
         m, n = self.img.shape
         img_new = np.zeros([m, n])
         for i in range(1, m-1):
+            # Nhân tích chập 
             for j in range(1, n-1):
                 temp=  self.img[i-1, j-1]    * kernel[0, 0]\
                     +  self.img[i, j-1]      * kernel[0, 1]\
@@ -41,11 +42,15 @@ class highpass_filter(object):
         return img_new
     def show_RobertCrossGradient1(self):
         '''Kết quả RobertCrossGradient theo hướng thứ nhất'''
-        G_cross1 = np.array(([0, 0, 0], [0,-1, 0], [0, 0, 1]), dtype="float")
+        G_cross1 = np.array(([0, 0, 0], 
+                             [0,-1, 0], 
+                             [0, 0, 1]), dtype="float")
         return self.Convolution2D(G_cross1)
     def show_RobertCrossGradient2(self):
         '''Kết quả RobertCrossGradient theo hướng thứ nhất'''
-        G_cross2 = np.array(([0, 0, 0], [0, 0,-1], [0, 1, 0]), dtype="float")
+        G_cross2 = np.array(([0, 0, 0], 
+                             [0, 0,-1], 
+                             [0, 1, 0]), dtype="float")
         return self.Convolution2D(G_cross2)
     def show_SharpenedRobert(self):
         '''Kết quả Lọc sắc nét sử dụng bộ lọc RobertCrossGradient theo 2 hướng chéo'''
